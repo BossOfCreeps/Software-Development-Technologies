@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block name %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+<div>
+    <ul>
+        <li><a href="{% url 'index' %}">Главная страница</a></li>
+        <li><a href="{% url 'races' %}">Забеги</a></li>
+        <li><a href="{% url 'results' %}">Результаты</a></li>
+    </ul>
+</div>
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

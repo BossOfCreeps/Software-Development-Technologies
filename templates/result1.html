@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block name %}Главная страница{% endblock %}
+
+{% block content %}
+    <form method="post" action="/results">
+        {% csrf_token %}
+        <p>Имя спортсмена <input type="text" name="sportsmen"></p>
+        <p>Дистанция <input type="text" name="distance"></p>
+        <p>Результат забега (ММ:СС) <input type="time" name="result_time"></p>
+        <button name="but" value="add">Отправить</button>
+    </form>
+    <hr>
+    <form method="post" action="/results">
+        {% csrf_token %}
+        <button name="but" value="sort">Отсортировать</button>
+    </form>
+    <table border="1">
+        <tr>
+            <td>Спортсмен</td>
+            <td>Дистанция</td>
+            <td>Дорожка</td>
+            <td>Время забега</td>
+            <td>Номер забега</td>
+            <td>Итоговое время</td>
+            <td>Место</td>
+        </tr>
+        {% for race in races %}
+           <tr>
+                <td>{{race.sportsmen}}</td>
+                <td>{{race.distance}}</td>
+                <td>{{race.track}}</td>
+                <td>{{race.time}}</td>
+                <td>{{race.number}}</td>
+                <td>{{race.result_time}}</td>
+                <td>{{race.place}}</td>
+           </tr>
+       {% endfor %}
+    </table>
+{% endblock %}
