@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block name %}Главная страница{% endblock %}
+
+{% block content %}
+
+    <table border="1">
+        <tr>
+            <td>Спортсмен</td>
+            <td>Дистанция</td>
+            <td>Дорожка</td>
+            <td>Время забега</td>
+            <td>Номер забега</td>
+            <td>Итоговое время</td>
+            <td>Место</td>
+        </tr>
+        {% for race in races %}
+           <tr>
+                <td>{{race.sportsmen}}</td>
+                <td>{{race.distance}}</td>
+                <td>{{race.track}}</td>
+                <td>{{race.time}}</td>
+                <td>{{race.number}}</td>
+                <td>{{race.result_time}}</td>
+                <td>{{race.place}}</td>
+           </tr>
+       {% endfor %}
+    </table>
+{% endblock %}

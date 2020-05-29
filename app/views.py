@@ -93,3 +93,7 @@ def results(request):
             return HttpResponseRedirect("/results")
         else:
             return render(request, "result1.html", {"races": Race.objects.order_by("time", "track")})
+
+    if str(request.user.groups.all()[0]) == "sportsmen":
+        return render(request, "result0.html", {"races": Race.objects.order_by("time", "track")})
+
